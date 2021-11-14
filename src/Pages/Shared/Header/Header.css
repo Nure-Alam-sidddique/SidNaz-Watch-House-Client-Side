@@ -1,0 +1,19 @@
+.nav-brand {
+  text-decoration: none;
+  color: white;
+  padding: 2px 5px;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.nav-item {
+  text-decoration: none;
+  color: white;
+  padding: 2px 5px;
+  font-size: 20px;
+  margin-right: 10px;
+}
+@media (max-width: 786px) {
+  .nav-item {
+    text-align: center;
+  }
+}

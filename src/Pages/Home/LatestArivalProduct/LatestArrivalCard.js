@@ -1,21 +1,24 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const LatestArrivalCard = ({ arrival }) => {
-    const { image, category, description } = arrival;
+    const { imageURL, title, brandName, _id } = arrival;
     return (
       <div>
         <Col>
           <Card>
             <Card.Img
-              style={{ width: "300px", height: "300px" }}
+              style={{ width: "100%", height: "250px" }}
               variant="top"
-              src={image}
+              src={imageURL}
             />
-            <Card.Body style={{margin:"auto"}}>
-              <Card.Title>{category}</Card.Title>
-                        <Card.Text>{description}</Card.Text>
-                        <Button type ="button"> Add To Cart</Button>
+            <Card.Body style={{ margin: "auto" }}>
+              <Card.Title>{brandName}</Card.Title>
+              <Card.Text>{title}</Card.Text>
+              <Link to={`/purchase/${_id}`}>
+             <Button type="button" > Add To Cart</Button>
+              </Link>   
             </Card.Body>
           </Card>
         </Col>

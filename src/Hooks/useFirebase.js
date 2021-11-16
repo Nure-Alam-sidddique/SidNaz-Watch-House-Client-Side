@@ -18,25 +18,23 @@ const useFirebase = () => {
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
 
-  const registerUser = (email,name,  password, history) => {
+  const registerUser = (email,password, name,  history) => {
     setIsLoading(true);
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      setAuthError(' ');
       const newUser = { email, displayName:  name };
       setUser(newUser);
+       
+      // Send data Database
+      saveToDatabase(email, name, "POST");
       // send name to firebase after Creation
 
 updateProfile(auth.currentUser, {
   displayName:name
 })
-  .then(() => {
-    // Profile updated!
-    // ...
-  })
-  .catch((error) => {
-    // An error occurred
-    // ...
-  });
+  .then(() => {})
+  .catch((error) =>{});
 
       history.replace('/');
       setAuthError(' ');
@@ -69,6 +67,9 @@ updateProfile(auth.currentUser, {
       const destination = location?.state?.from || '/';
       history.replace(destination);
         // console.log(result.user);
+      //  insrte data afer login
+     const user = result.user;
+      saveToDatabase(user.email, user.displayName, 'PUT');
         setAuthError(' ')
       }).catch((error)=>{
       setAuthError(error.message);
@@ -87,12 +88,35 @@ updateProfile(auth.currentUser, {
       return () =>  unSubscribed;
 
   }, []);
-  const logOut = () => {
+  const logOut = (history)=> {
     setIsLoading(true);
     signOut(auth).then(() => {
-      setUser({});
+      history.push("/home");
+     setUser({});
     }).finally(()=>setIsLoading(false))
-  };
+};
+  
+const saveToDatabase = (email, displayName, method) => {
+const users= {email, displayName}
+  // axios.post("http://localhost:5000/users", user).then((res) => {
+  //   if (res.data.insertedId) {
+  //     alert("User Data Successfully Send");
+  //   }
+  // });
+  fetch('http://localhost:5000/users', {
+    method: method,
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(users)
+  }).then(res => res.json()).then(data => {
+    
+    console.log(data);
+    if (data.insertedId || data.upsertedId) {
+      alert("User Data Successfully Send");
+    }
+  });
+}
   return {
     user,
     logOut,

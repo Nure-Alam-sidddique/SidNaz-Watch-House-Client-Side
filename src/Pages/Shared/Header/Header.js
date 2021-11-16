@@ -1,12 +1,18 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import banner1 from '../../../BannerImage/banner1.jpeg';
+import banner1 from '../../../BannerImage/slider1.jpg';
 import useAuth from '../../../Hooks/useAuth';
 import './Header.css';
 
 const Header = () => {
-  const {user, signInUsingGoogle, logOut}= useAuth();
+  const { user, signInUsingGoogle, logOut } = useAuth();
+  const history = useHistory();
+  const handleLogout = () => {
+    logOut(history);
+  }
+  console.log(user);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -39,14 +45,20 @@ const Header = () => {
               Contact
             </NavLink>
           </Nav>
-          {user?.displayName ? <span style={{color:"white", fontSize: "15px"}}>{ user?.displayName}</span>: <span></span>}
+          {user?.displayName ? (
+            <span style={{ color: "white", fontSize: "15px" }}>
+              {user?.displayName}
+            </span>
+          ) : (
+            <span></span>
+          )}
           <Nav>
             <NavLink
               className="nav-item"
               style={{ marginLeft: "30px" }}
               to="/admin"
             >
-              Admin Login
+              Admin Dashboard
             </NavLink>
           </Nav>
 
@@ -57,21 +69,26 @@ const Header = () => {
                   <Nav>
                     <NavDropdown
                       id="nav-dropdown-dark-example"
-                      title="Dashboard"
+                      title={<img
+                          style={{ width: "30px", height: "30px", background: "white" , borderRadius: "50%"}}
+                          src={ user?.photoURL}
+                        />
+                        
+                      }
                       menuVariant="dark"
                     >
-                      <NavDropdown.Item href="#action/3.1">
-                        Payment
+                      <NavDropdown.Item href= "#action/3.1">
+                        <NavLink to="/payment"> Payment</NavLink>
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">
-                        My Orders
+                      <NavDropdown.Item to="#action/3.2">
+                        <NavLink to="/myorders"> My Orders</NavLink>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#action/3.3">
-                        Reviews
+                     <NavLink to="/reviews"> Review</NavLink>
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item onClick={logOut}>
-                        Logout
+                      <NavDropdown.Item onClick={handleLogout}>
+                       Logout
                       </NavDropdown.Item>
                     </NavDropdown>
                   </Nav>

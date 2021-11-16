@@ -8,8 +8,8 @@ const LatestArivelProduct = () => {
   const [isLoading, SetIsLoading] = useState(false);
   const newArrivalLoading = async () => {
     try {
-      await  axios("http://fakestoreapi.com/products").then((res) =>
-          SetArrival(res.data)
+      await axios("http://localhost:5000/products").then((res) =>
+        SetArrival(res.data)
       );
       SetIsLoading(true);
     }
@@ -24,9 +24,9 @@ const LatestArivelProduct = () => {
     return (
       <div>
         <h1>Latest Product</h1>
-        <Row xs={1} md={3} className="g-4">
+        <Row xs={1} md={4} className="g-4">
             {isLoading ? (
-            arrivals.map((arrival) =><LatestArrivalCard key= {arrival.id} arrival = {arrival}></LatestArrivalCard>)
+            arrivals.slice(0,12).map((arrival) =><LatestArrivalCard key= {arrival.id} arrival = {arrival}></LatestArrivalCard>)
             ) : (
               <Spinner
                 className="m-auto p-4 mt-3"

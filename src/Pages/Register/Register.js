@@ -3,6 +3,7 @@ import { Alert, Button, Col, Container, Form, Row, Spinner } from "react-bootstr
 import { Link, useHistory, useLocation } from "react-router-dom";
 import login from "../../../src/login.png";
 import useAuth from "../../Hooks/useAuth";
+import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
 
 const Register = () => {
@@ -24,7 +25,7 @@ const Register = () => {
             return;
       }
       else {
-        registerUser(registerData.email, registerData.name, registerData.password, history);
+        registerUser(registerData.email, registerData.password, registerData.name, history);
         // alert('Register Succssfully');
       }
      
@@ -95,7 +96,12 @@ const Register = () => {
                 >
                   Sign In Google
                 </Button>
-                <Link to="/login">Your have an account? Please Login</Link>
+                <p>
+                  <span>
+                    Already have an account?{" "}
+                    <Link style={{textDecoration: "none"}} to="/login">Please Login</Link>
+                  </span>
+                </p>
               </Form>
             )}
             {isLoading && (
@@ -115,6 +121,7 @@ const Register = () => {
           </Col>
         </Row>
       </Container>
+      <Footer></Footer>
     </div>
   );
 };

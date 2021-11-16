@@ -1,26 +1,47 @@
-import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Row, Spinner } from 'react-bootstrap';
+import BestSellerCard from './BestSellerCard';
 
 const BestSeller = () => {
+  const [sellers, setSellers] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  const sellerLoading = async () => {
+    try {
+      await axios("http://localhost:5000/products").then((res) =>
+        setSellers(res.data)
+      );
+      setIsLoading(true);
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  useEffect(() => {
+    sellerLoading();
+  }, [])
     return (
       <div>
         <h1>Best Product</h1>
         <Row xs={1} md={3} className="g-4">
-          {Array.from({ length: 6 }).map((_, idx) => (
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Card title</Card.Title>
-                  <Card.Text>
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
+          {isLoading ? (
+            sellers
+              .slice(0, 9)
+              .map((seller) => (
+                <BestSellerCard
+                  key={seller.id}
+                  seller={seller}
+                ></BestSellerCard>
+              ))
+          ) : (
+            <Spinner
+              className="m-auto p-4 mt-3"
+              animation="border"
+              variant="primary"
+            />
+          )}
         </Row>
       </div>
     );

@@ -4,6 +4,7 @@ import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import login from '../../../src/login.png';
 import useAuth from '../../Hooks/useAuth';
+import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
 
 const Login = () => {
@@ -39,7 +40,9 @@ const Login = () => {
                   variant="primary"
                 />
               )}
-              {user?.email && <Alert variant="success">User Successfully Login</Alert>}
+              {user?.email && (
+                <Alert variant="success">User Successfully Login</Alert>
+              )}
               {authError && <Alert variant="danger">{authError}</Alert>}
               <h1>Please Login</h1>
               <Form
@@ -72,17 +75,18 @@ const Login = () => {
                 >
                   Login
                 </Button>
+                <p>........................................................</p>
                 <Button
                   style={{ width: "100%", margin: 4 }}
                   variant="primary"
                   type="submit"
                   onClick={handleGoogleSignIn}
                 >
-                 
                   Google Login
                 </Button>
-
-                <Link to="/register">Are you register? Please Register</Link>
+                <p >
+                  <span> Are You New User?   <Link style={{textDecoration: "none"}} to="/register">Please Register</Link></span>
+                </p>
               </Form>
             </Col>
             <Col xs={12} md={8}>
@@ -90,6 +94,7 @@ const Login = () => {
             </Col>
           </Row>
         </Container>
+        <Footer></Footer>
       </div>
     );
 };

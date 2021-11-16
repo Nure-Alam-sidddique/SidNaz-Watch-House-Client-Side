@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-      <div>
+      <div className="container-fluid">
         <Row
           className="h-50 text-white mt-4"
           style={{ backgroundColor: "#20232A" }}
@@ -103,6 +103,7 @@ const Footer = () => {
               />
             </div>
           </Col>
+
           <hr />
           <div className="text-align-center mb-2 text-white">
             <p>

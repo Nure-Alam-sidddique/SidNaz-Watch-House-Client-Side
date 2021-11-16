@@ -3,7 +3,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import AuthProvider from "./Context/AuthProvider";
 import About from "./Pages/About/About";
-import AdminHome from "./Pages/AdminDashboard/DashboardHome/AdminHome";
+import AdminHome from "./Pages/AdminDashboard/AdminHome/AdminHome";
 import ManageAllOrders from "./Pages/AdminDashboard/ManageAllOrders/ManageAllOrders";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";

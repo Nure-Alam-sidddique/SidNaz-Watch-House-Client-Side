@@ -10,17 +10,16 @@ import WatchGallery from '../WatchGallery/WatchGallery';
 
 const Home = () => {
     return (
-        <div>
-            <Header></Header>
-            <Banner></Banner>
-            <LatestArivelProduct></LatestArivelProduct>
-            <FeaturesProduct></FeaturesProduct>
-            <BestSeller></BestSeller>
-            <WatchGallery></WatchGallery>
-            <Testimonial></Testimonial>
-            <Footer></Footer>
-            
-        </div>
+      <div className="fixed">
+        <Header></Header>
+        <Banner></Banner>
+        <LatestArivelProduct></LatestArivelProduct>
+        <FeaturesProduct></FeaturesProduct>
+        <BestSeller></BestSeller>
+        <WatchGallery></WatchGallery>
+        <Testimonial></Testimonial>
+        <Footer></Footer>
+      </div>
     );
 };
 

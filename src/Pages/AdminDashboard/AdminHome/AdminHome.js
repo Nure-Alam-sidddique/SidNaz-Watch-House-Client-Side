@@ -1,7 +1,5 @@
 import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,21 +10,27 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import AddIcon from "@mui/icons-material/Add";
+import AddModeratorIcon from "@mui/icons-material/AddModerator";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MonitorWeightIcon from "@mui/icons-material/MonitorWeight";
+import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import React from "react";
 import { useHistory } from "react-router";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 import AddProducts from '../AddProducts/AddProducts';
 import DashboardHome from "../DashboardHome/DashboardHome";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 import ManageProducts from '../ManageProducts/ManageProducts';
-
-
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -63,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AdminHome(props) {
-  const { logOut } = useAuth();
+  const { user,logOut, admin, isLoading } = useAuth();
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -81,54 +85,122 @@ function AdminHome(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Divider />
+      {user?.photoURL ? (
+        <img
+          style={{ margin: " auto 50px", borderRadius: "50%" }}
+          src={`${user.photoURL}`}
+          alt="userPhoto"
+        />
+      ) : (
+        <h4 style={{textAlign:"center"}}> {user.displayName}</h4>
+      )}
+      {/* <Divider /> */}
       <List>
-        <ListItem>
-          <Link to='/home'>
-            <Button color="inherit">Home</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to={`${url}`}>
-            <Button color="inherit">Dashboard</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to={`${url}/makeAdmin`}>
-            <Button color="inherit">Make Admin</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          
-          <Link to={`${url}/manageProduct`}>
-            <Button color="inherit">Manage Product</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to={`${url}/addProduct`}>
-            <Button color="inherit">Add Product</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to={`${url}/manageOrder`}>
-            <Button color="inherit">ManageOrder</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to={`${url}/logout`}>
-            <Button onClick={logOutFromDashboard} color="primary">Logout</Button>
-          </Link>
-        </ListItem>
-      </List>
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
+        <ListItem button>
+          <Link style={{ textDecoration: "none" }} to="/home">
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <HomeIcon color="action" style={{ marginRight: "25px" }} />
+              <ListItemText
+                style={{ fontSize: "20px", fontWeight: 100 }}
+                primary="Home"
+              />
             </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+          </Link>
+        </ListItem>
+        <ListItem button>
+          <Link style={{ textDecoration: "none" }} to={`${url}`}>
+            <ListItemIcon>
+              <DashboardIcon color="action" style={{ marginRight: "25px" }} />
+              <ListItemText
+                style={{ fontSize: "20px", fontWeight: 100 }}
+                primary="Dashboard"
+              />
+            </ListItemIcon>
+          </Link>
+        </ListItem>
+        {admin && (
+          <Box>
+            <ListItem button>
+              <Link style={{ textDecoration: "none" }} to={`${url}/makeAdmin`}>
+                <ListItemIcon>
+                  <AddModeratorIcon
+                    color="action"
+                    style={{ marginRight: "25px" }}
+                  />
+                  <ListItemText
+                    style={{ fontSize: "20px", fontWeight: 100 }}
+                    primary="Make Admin"
+                  />
+                </ListItemIcon>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`${url}/manageProduct`}
+              >
+                <ListItemIcon>
+                  <MonitorWeightIcon
+                    color="action"
+                    style={{ marginRight: "25px" }}
+                  />
+                  <ListItemText
+                    style={{ fontSize: "20px", fontWeight: "20px" }}
+                    primary="Manage Prouduct"
+                  />
+                </ListItemIcon>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link style={{ textDecoration: "none" }} to={`${url}/addProduct`}>
+                <ListItemIcon>
+                  <AddIcon color="action" style={{ marginRight: "25px" }} />
+                  <ListItemText
+                    style={{ fontSize: "20px", fontWeight: "20px" }}
+                    primary="Add Product"
+                  />
+                </ListItemIcon>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`${url}/manageOrder`}
+              >
+                <ListItemIcon>
+                  <LibraryAddIcon
+                    color="action"
+                    style={{ marginRight: "25px" }}
+                  />
+                  <ListItemText
+                    style={{ fontSize: "20px", fontWeight: "20px" }}
+                    primary="Manage Order"
+                  />
+                </ListItemIcon>
+              </Link>
+            </ListItem>
+          </Box>
+        )}
+        <ListItem button onClick={logOutFromDashboard}>
+          <Link style={{ textDecoration: "none" }} to={`${url}/logout`}>
+            <ListItemIcon>
+              <LogoutIcon color="action" style={{ marginRight: "25px" }} />
+              <ListItemText
+                style={{ fontSize: "20px", fontWeight: "20px" }}
+                primary="Logout"
+              />
+            </ListItemIcon>
+          </Link>
+        </ListItem>
+
+        {/* <ListItem button>
+          <ListItemIcon onClick={logOutFromDashboard}>
+            <Link to={`${url}/logout`}>
+              <HomeIcon color="action" />
+            </Link>
+          </ListItemIcon>
+          <ListItemText primary="Logout" />
+        </ListItem> */}
       </List>
     </div>
   );
@@ -151,7 +223,7 @@ function AdminHome(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+          {user?.displayName}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -192,18 +264,21 @@ function AdminHome(props) {
           <Route exact path={path}>
            <DashboardHome></DashboardHome>
           </Route>
-          <Route path={`${path}/makeAdmin`}>
+          <Route  path={`${path}/update/:updatedId`}>
+           <UpdateProduct></UpdateProduct>
+          </Route>
+          <AdminRoute path={`${path}/makeAdmin`}>
            <MakeAdmin></MakeAdmin>
-          </Route>
-          <Route path={`${path}/manageOrder`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/manageOrder`}>
            <ManageAllOrders></ManageAllOrders>
-          </Route>
-          <Route path={`${path}/addProduct`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/addProduct`}>
            <AddProducts></AddProducts>
-          </Route>
-          <Route path={`${path}/manageProduct`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/manageProduct`}>
            <ManageProducts></ManageProducts>
-          </Route>
+          </AdminRoute>
         </Switch>
         {/* <DashboardHome></DashboardHome> */}
       </main>

@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
-  getAuth,
-  GoogleAuthProvider,
+  getAuth, getIdToken, GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -15,8 +14,12 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState(' ');
+  const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState(' ');
+
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
+ 
 
   const registerUser = (email,password, name,  history) => {
     setIsLoading(true);
@@ -75,10 +78,12 @@ updateProfile(auth.currentUser, {
       setAuthError(error.message);
      }).finally(()=>setIsLoading(false))
   };
+  //  user State load from firebase
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+          getIdToken(user).then(idToken => setToken(idToken));
       }
       else {
         setUser({});
@@ -88,6 +93,12 @@ updateProfile(auth.currentUser, {
       return () =>  unSubscribed;
 
   }, []);
+  //  User load form database
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`).then(res => res.json()).then(data => {
+      setAdmin(data.admin)
+    })
+  }, [user.email])
   const logOut = (history)=> {
     setIsLoading(true);
     signOut(auth).then(() => {
@@ -119,6 +130,8 @@ const users= {email, displayName}
 }
   return {
     user,
+    admin,
+    token,
     logOut,
     signInWithGoogle,
     registerUser,

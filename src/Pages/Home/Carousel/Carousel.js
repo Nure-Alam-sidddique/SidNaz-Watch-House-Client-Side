@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import banner1 from '../../../BannerImage/banner1.jpg';
 import banner2 from '../../../BannerImage/banner2.jpg';
 import banner3 from '../../../BannerImage/banner3.jpg';
@@ -44,13 +45,15 @@ const CarouselSlider = () => {
           <img
             className="d-block w-100"
             style={{ height: "450px" }}
-            src={image.image} 
+            src={image.image}
             alt="First slide"
           />
-          <Carousel.Caption style={{marginTop: "-30px"}}>
+          <Carousel.Caption style={{ marginTop: "-30px" }}>
             <h3>{image.title}</h3>
             <p>{image.description}</p>
-            <Button>Shop Now</Button>
+            <Button style={{ backgroundColor: "rgba(52, 52, 52, alpha)", width: "180px"}}>
+             <Link style={{textDecoration: "none", fontSize: "18px", color:"white"}} to ='/shop'>Explore More</Link>
+            </Button>
           </Carousel.Caption>
         </Carousel.Item>
       ))}

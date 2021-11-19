@@ -26,7 +26,7 @@ const Shop = () => {
       <div>
           <Headers></Headers>
           <Container>
-      <h1>All Product</h1>
+      <h1 style={{textAlign: "center", marginTop: "10px", marginBottom: "20px",color: "orange"}}>Explore Our Watch Shop</h1>
       <Row xs={1} md={4} className="g-4">
         {isLoading ? (
           allProducts.map((product) => (

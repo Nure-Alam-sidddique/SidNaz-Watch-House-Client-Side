@@ -1,6 +1,7 @@
 import { TextField } from '@material-ui/core';
-import Button from "@material-ui/core/Button";
 import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import React, { useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 
@@ -30,19 +31,42 @@ const MakeAdmin = () => {
         e.preventDefault();
     }
     return (
-        <div>
-            <h1>Make Admin</h1>
-            <form sx={{width: "50%"}} onSubmit={handleAdminSubmit}>
-                <TextField
-                    label="Eamil"
-                    type="email"
-                    onBlur={handleOnBlur}
-                    variant="standard"
-                />
-                <Button type="submit" variant="contained">Make Admin</Button>
-            </form>
-            {success && <Alert severity="success">Make Admin SuccessFully</Alert>}
-        </div>
+      <div>
+        <Typography
+          style={{ textAlign: "center" }}
+          variant="h4"
+          gutterBottom
+          component="div"
+        >
+          Make Admin
+        </Typography>
+        <form
+          style={{
+            margin: "auto",
+            marginTop: "20px",
+            boxShadow: "2px 4px 5px lightgrey",
+            padding: "10px",
+            display: "flex",
+            flexDirection: "column",
+            width: "50%",
+            alignItems: "center",
+            height: "300px",
+          }}
+          onSubmit={handleAdminSubmit}
+        >
+          <TextField
+            style={{ width: "50%", marginBottom: "15px", marginTop: "50px" }}
+            label="Eamil"
+            type="email"
+            onBlur={handleOnBlur}
+            variant="standard"
+          />
+          <Button style={{ width: "50%" }} type="submit" variant="contained">
+            Make Admin
+          </Button>
+          {success && <Alert style={{ width: "50%" }} severity="success">Make Admin SuccessFully</Alert>}
+        </form>
+      </div>
     );
 };
 

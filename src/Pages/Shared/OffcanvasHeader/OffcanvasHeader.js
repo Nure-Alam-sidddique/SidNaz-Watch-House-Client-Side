@@ -11,25 +11,33 @@ const handleLogout = () => {
   }
     return (
       <>
-       
-          <Offcanvas
-            placement="end"
-            show={props.show}
+        <Offcanvas
+          placement="end"
+          show={props.show}
           onHide={props.handleClose}
-          style={{width: "auto"}}
+          style={{ width: "auto" }}
+        >
+          <Offcanvas.Header>
+            <Offcanvas.Title></Offcanvas.Title>
+          </Offcanvas.Header>
+          <img style={{borderRadius: "50%", width: "100px", height: "100px" , margin: "auto"}} src={`${user.photoURL}`} alt="userPhoto"/>
+          <h5 style={{marginTop: "30px", padding: "8px"}}>{user.displayName}</h5>
+          <Offcanvas.Body
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
           >
-            <Offcanvas.Header closeButton>
-            <Offcanvas.Title>{ user.displayName}</Offcanvas.Title>
-            </Offcanvas.Header>
-          <Offcanvas.Body style={{ display: "flex", flexDirection: "column" , textAlign: "center"}}>
-              <Link to="/payment"> Payment</Link>
-              <Link to="/myorders"> My Orders</Link>
-              <Link to="/reviews"> Review</Link>
-              <Link to="/reviews" onClick={handleLogout}>
-                LogOut
-              </Link>
-            </Offcanvas.Body>
-          </Offcanvas>
+            <Link style={{textDecoration: "none", fontSize: "20px", color: "MenuText" , margin: "3px"}}to="/payment"> Payment</Link>
+            <Link style={{textDecoration: "none", fontSize: "20px", color: "MenuText" , margin: "3px"}} to="/myorders"> My Orders</Link>
+            <Link style={{ textDecoration: "none", fontSize: "20px", color: "MenuText", margin: "3px" }} to="/reviews"> Review</Link>
+            <hr/>
+            <Link style={{textDecoration: "none", fontSize: "20px", color: "MenuText" , margin: "3px"}} to="/reviews" onClick={handleLogout}>
+              LogOut
+            </Link>
+          </Offcanvas.Body>
+        </Offcanvas>
       </>
     );
 };

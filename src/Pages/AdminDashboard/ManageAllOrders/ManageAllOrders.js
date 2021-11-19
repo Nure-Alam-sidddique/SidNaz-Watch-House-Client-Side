@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -19,6 +20,22 @@ const rows = [
 
 export default function AcccessibleTable() {
   const [userOrder, setUserOrder] = React.useState([]);
+  const [action, setAction] = React.useState(' ');
+  const handleCancle = (id) => {
+    setAction("Canclled");
+  }
+
+  const handleApproval = id => {
+    const actionId = userOrder.map(actionid => (actionid._id));
+    const newArray = [...actionId];
+    console.log("comes from found", newArray);
+    const singleId=newArray.find(elementId=>elementId===id)
+    if (singleId) {
+      return setAction("Approval");
+    }
+    setAction(' ');
+   
+  }
   const orderLoading = async () => {
     try {
       await axios("http://localhost:5000/orders").then(res => setUserOrder(res.data));
@@ -42,22 +59,38 @@ export default function AcccessibleTable() {
             <TableCell>ProductName</TableCell>
             <TableCell align="right">ProductImage</TableCell>
             <TableCell align="right">Price </TableCell>
-            <TableCell align="right">UserName</TableCell>
-            <TableCell align="right">UserEmail</TableCell>
-            <TableCell align="right">Gender</TableCell>
-            <TableCell align="right">ProductStatus</TableCell>
+            <TableCell align="right">Product Status</TableCell>
+            <TableCell align="right">Id</TableCell>
+            <TableCell align="right">Admin Action</TableCell>
+
+            {/* <TableCell align="right">ProductStatus</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
           {userOrder.map((order) => (
             <TableRow key={order.name}>
-              <TableCell component="th" scope="row">{ order.brandName}</TableCell>
-              <TableCell align="right"><img style={{width: "30px", height: "30px"}} src={ order.imageURL} alt="photo"/></TableCell>
-              <TableCell align="right">{ order.price}</TableCell>
-              <TableCell align="right">{order.displayName}</TableCell>
-              <TableCell align="right">{ order.email}</TableCell>
-              <TableCell align="right">{ order.gender}</TableCell>
-              <TableCell align="right">Active</TableCell>
+              <TableCell component="th" scope="row">
+                {order.brandName}
+              </TableCell>
+              <TableCell align="right">
+                <img
+                  style={{ width: "30px", height: "30px" }}
+                  src={order.imageURL}
+                  alt="photo"
+                />
+              </TableCell>
+              <TableCell align="right">{order.price}</TableCell>
+              <TableCell align="right">{action}</TableCell>
+              <TableCell align="right">{order._id}</TableCell>
+              {/* <TableCell align="right"></TableCell>  */}
+              <TableCell align="right">
+                <Button onClick={() => handleCancle(order._id)} variant="text">
+                  Cancle
+                </Button>
+                <Button onClick={()=>handleApproval(order._id)} variant="text">
+                  Approval
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

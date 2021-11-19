@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import login from "../../../src/login.png";
+import login from "../../../src/login.jpg";
 import useAuth from "../../Hooks/useAuth";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
@@ -41,7 +41,7 @@ const Register = () => {
       <Header></Header>
       <Container>
         <Row>
-          <Col xs={6} md={4} /*style={{ marginTop: "200px" }}*/>
+          <Col xs={6} md={4} style={{ marginTop: "100px" }}>
             <h1>Please Register</h1>
             {!isLoading && (
               <Form
@@ -99,7 +99,9 @@ const Register = () => {
                 <p>
                   <span>
                     Already have an account?{" "}
-                    <Link style={{textDecoration: "none"}} to="/login">Please Login</Link>
+                    <Link style={{ textDecoration: "none" }} to="/login">
+                      Please Login
+                    </Link>
                   </span>
                 </p>
               </Form>
@@ -117,7 +119,10 @@ const Register = () => {
             {authError && <Alert variant="danger">{authError}</Alert>}
           </Col>
           <Col xs={12} md={8}>
-            <img src={login} />
+            <img
+              style={{ width: "65%", height: "100vh", marginLeft: "100px" }}
+              src={login}
+            />
           </Col>
         </Row>
       </Container>

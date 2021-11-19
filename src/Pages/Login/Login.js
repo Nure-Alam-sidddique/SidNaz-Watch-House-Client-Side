@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import login from '../../../src/login.png';
+import login from '../../../src/login.jpg';
 import useAuth from '../../Hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
@@ -32,7 +32,7 @@ const Login = () => {
         <Header></Header>
         <Container>
           <Row>
-            <Col xs={6} md={4} /*style={{ marginTop: "200px" }}*/>
+            <Col xs={6} md={4} style={{ marginTop: "100px" }}>
               {isLoading && (
                 <Spinner
                   className="m-auto p-4 mt-3"
@@ -55,7 +55,7 @@ const Login = () => {
                 }}
               >
                 <Form.Control
-                  style={{ margin: 8 }}
+                  style={{ margin:"8px" }}
                   type="email"
                   name="email"
                   onBlur={handleInputField}
@@ -84,13 +84,22 @@ const Login = () => {
                 >
                   Google Login
                 </Button>
-                <p >
-                  <span> Are You New User?   <Link style={{textDecoration: "none"}} to="/register">Please Register</Link></span>
+                <p>
+                  <span>
+                    {" "}
+                    Are You New User?{" "}
+                    <Link style={{ textDecoration: "none" }} to="/register">
+                      Please Register
+                    </Link>
+                  </span>
                 </p>
               </Form>
             </Col>
             <Col xs={12} md={8}>
-              <img src={login} />
+              <img
+                style={{ width: "65%", height: "100vh", marginLeft: "100px" }}
+                src={login}
+              />
             </Col>
           </Row>
         </Container>

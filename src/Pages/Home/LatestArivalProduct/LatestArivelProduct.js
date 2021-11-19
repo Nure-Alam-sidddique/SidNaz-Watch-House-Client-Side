@@ -23,10 +23,10 @@ const LatestArivelProduct = () => {
   console.log(arrivals);
     return (
       <div>
-        <h1>Latest Product</h1>
+        <h1 style={{textAlign:"center",color: "orange" , marginTop:"10px", marginBottom: "20px"}}>Latest Product</h1>
         <Row xs={1} md={4} className="g-4">
             {isLoading ? (
-            arrivals.slice(0,12).map((arrival) =><LatestArrivalCard key= {arrival.id} arrival = {arrival}></LatestArrivalCard>)
+            arrivals.slice(0,8).map((arrival) =><LatestArrivalCard key= {arrival.id} arrival = {arrival}></LatestArrivalCard>)
             ) : (
               <Spinner
                 className="m-auto p-4 mt-3"

@@ -24,11 +24,20 @@ const BestSeller = () => {
   }, [])
     return (
       <div>
-        <h1>Best Product</h1>
+        <h1
+          style={{
+            textAlign: "center",
+            color: "orange",
+            marginTop: "10px",
+            marginBottom: "20px",
+          }}
+        >
+          Best Product
+        </h1>
         <Row xs={1} md={3} className="g-4">
           {isLoading ? (
             sellers
-              .slice(0, 9)
+              .slice(0, 6)
               .map((seller) => (
                 <BestSellerCard
                   key={seller.id}

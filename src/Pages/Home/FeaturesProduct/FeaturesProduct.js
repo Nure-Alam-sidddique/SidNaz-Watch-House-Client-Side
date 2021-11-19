@@ -4,37 +4,44 @@ import featuredImage from '../../../BannerImage/banner1.jpg';
 
 const FeaturesProduct = () => {
     return (
-      <div style={{backgroundColor: "lightgray"}}>
-        {/* <h1 className="text-center">Features Product</h1> */}
+      <div style={{ backgroundColor: "lightgray" }}>
         <Row>
           <Col>
-            <div style={{marginLeft: "20px"}}>
-            <div >
-              <h1>Featured Product</h1>
-              <h4>
-                Constrain <br /> Chornograph Watches
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus iste laudantium dolorum, consectetur ea iure hic?
-                Libero illum cupiditate sed tenetur!
-              </p>
-            </div>
-            <div>
+            <div style={{ marginLeft: "20px" }}>
               <div>
-                <h1>logo</h1>
-                <h5>Warranty</h5>
+                <h1>Featured Product</h1>
+                <h4>
+                  Constrain <br /> Chornograph Watches
+                </h4>
+                <p>
+                  Luxury French brand, Bell & Ross is headed by Bruno Belamich
+                  and Carlos A. Rosillo. Launched in 1992, the design influences
+                  of these watches include Aircraft instruments. Most noted
+                  about this fine watch company is the square shaping that
+                  frames many of its watches’ faces. Its aesthetic boasts modern
+                  influence and can be identified by its sporty and athletic
+                  references.
+                </p>
               </div>
               <div>
-                <h1>logo</h1>
-                <h5>Warranty</h5>
+                <div>
+                  <h1>logo</h1>
+                  <h5>Warranty</h5>
+                </div>
+                <div>
+                  <h1>logo</h1>
+                  <h5>Warranty</h5>
+                </div>
               </div>
-            </div>
             </div>
           </Col>
           <Col>
             <div>
-              <img style={{width: "100%", height: "400px"}} src={featuredImage} alt="featuredImage"/>
+              <img
+                style={{ width: "100%", height: "400px" }}
+                src={featuredImage}
+                alt="featuredImage"
+              />
             </div>
           </Col>
         </Row>

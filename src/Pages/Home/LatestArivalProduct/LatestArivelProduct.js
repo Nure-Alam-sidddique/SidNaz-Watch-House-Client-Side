@@ -8,8 +8,8 @@ const LatestArivelProduct = () => {
   const [isLoading, SetIsLoading] = useState(false);
   const newArrivalLoading = async () => {
     try {
-      await axios("http://localhost:5000/products").then((res) =>
-        SetArrival(res.data)
+      await axios("https://quiet-springs-91793.herokuapp.com/products").then(
+        (res) => SetArrival(res.data)
       );
       SetIsLoading(true);
     }

@@ -3,37 +3,41 @@ import React from 'react';
 
 const DashboardHome = () => {
     return (
-        <>
+      <>
+        <Typography variant="h3">Sidnaz Watch History</Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
+          Not all watches are created equal. In fact, some are in a league of
+          their own. Combining impressive craftsmanship with a stylish
+          aesthetic, luxury watches are so much more than simple accessories;
+          they’re wearable works of art. As such, it’s no wonder why names like
+          Rolex stir a certain feeling in not only watch enthusiasts but just
+          about everyone. So, if you’re looking for a timepiece that’ll provide
+          fashion and function for years to come, you can’t go past the world’s
+          most lavish watch labels. Unbeatable for their sophisticated designs
+          and precise manufacturing, these names ooze prestige and magnificence.
+          Here, we’ve rounded up the best luxury watch brands you need to know.
         </Typography>
+        <Typography variant="h3">Vacheron Constantin</Typography>
         <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-            </Typography>
-            </>
+          One of the oldest manufacturers of luxury watches, Vacheron
+          Constantin, was founded by Jean-Marc Vacheron in 1755, in Geneva
+          Switzerland. This brand of fine watches is a member of the Richemont
+          Group. Vacheron Constantin’s watches truly reflect their heritage.
+          With precise detailing alongside traditional shapes and styling, these
+          watches are unlike others. Napoleon Bonaparte is said to have worn
+          their watches, along with other noted historical figures like Harry
+          Truman and Pope Pius IX.
+        </Typography>
+        <Typography variant="h3">Blancpain</Typography>
+        <Typography paragraph>
+          A subsidiary of the Swatch Group, watch brand Blancpain was much like
+          the other brands founded in another era; 1735. Blancpain underwent big
+          developments, with its growth thriving in the 19th century, updating
+          and modernizing production and innovation of their watches. Blancpain
+          has a broad range of different watches available; including
+          minimalistic designs as well as more elaborately styled pieces.
+        </Typography>
+      </>
     );
 };
 

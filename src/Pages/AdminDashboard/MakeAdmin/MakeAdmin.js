@@ -15,19 +15,21 @@ const MakeAdmin = () => {
     const handleAdminSubmit = e => {
         const user = { email }
         // axios.put(`http://localhost:5000/users/admin`, user).then(res => console.log(res.data));
-        fetch(`http://localhost:5000/users/admin`, {
-            method: "PUT",
-            headers: {
-                'authorization' : `Bearer  ${token}`,
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        }).then(res => res.json()).then(data => {
+        fetch(`https://quiet-springs-91793.herokuapp.com/users/admin`, {
+          method: "PUT",
+          headers: {
+            authorization: `Bearer  ${token}`,
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
             if (data.modifiedCount) {
-                setSeuccess(true)
-                console.log(data);
+              setSeuccess(true);
+              console.log(data);
             }
-    })
+          });
         e.preventDefault();
     }
     return (

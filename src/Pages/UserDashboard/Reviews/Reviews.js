@@ -10,12 +10,14 @@ const Reviews = () => {
   const { user } = useAuth();
   const { register, handleSubmit } = useForm();
   const onSubmit =(data) => {
-    axios.post('http://localhost:5000/review', data).then(res => {
-      if (res.data.insertedId) {
-        alert("Comment Successfully Send");
-        console.log(res.data.insertedId);
-      }
-    })
+    axios
+      .post("https://quiet-springs-91793.herokuapp.com/review", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Comment Successfully Send");
+          console.log(res.data.insertedId);
+        }
+      });
   }
     return (
       <>

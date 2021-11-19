@@ -9,8 +9,8 @@ const BestSeller = () => {
 
   const sellerLoading = async () => {
     try {
-      await axios("http://localhost:5000/products").then((res) =>
-        setSellers(res.data)
+      await axios("https://quiet-springs-91793.herokuapp.com/products").then(
+        (res) => setSellers(res.data)
       );
       setIsLoading(true);
     }

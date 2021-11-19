@@ -9,7 +9,7 @@ const MyOrders = () => {
   const { user } = useAuth();
     const [myorders, setMyorders] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const url = `http://localhost:5000/placeOrders?email=${user.email}`;
+    const url = `https://quiet-springs-91793.herokuapp.com/placeOrders?email=${user.email}`;
     const myOrderLoading = async () => {
       try {
           await axios(url).then(res => setMyorders(res.data));
@@ -27,7 +27,7 @@ const MyOrders = () => {
   const deleteOrders = (orderId) => {
     const procceed = window.confirm('Are you sure you want to delete your favourite Order');
     if (procceed) {
-       const url = `http://localhost:5000/placeOrders/${orderId}`;
+       const url = `https://quiet-springs-91793.herokuapp.com/placeOrders/${orderId}`;
        axios.delete(url).then((res) => {
          if (res.data.deletedCount) {
            alert("Delete Successfully");

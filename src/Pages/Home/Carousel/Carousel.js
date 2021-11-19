@@ -1,29 +1,39 @@
 import React from 'react';
 import { Button, Carousel } from 'react-bootstrap';
-import banner1 from '../../../BannerImage/slider1.jpg';
-import banner2 from '../../../BannerImage/slider2.jpg';
-import banner3 from '../../../BannerImage/slider3.jpg';
+import banner1 from '../../../BannerImage/banner1.jpg';
+import banner2 from '../../../BannerImage/banner2.jpg';
+import banner3 from '../../../BannerImage/banner3.jpg';
+import banner4 from '../../../BannerImage/banner4.jpg';
 const carouselImages = [
   {
     id: 1,
-    title: "America",
+    title: " Chopard",
     description:
-      "Room to breathe. We’ve got all the social distancing you want with hundreds of acres of parks",
-    image: banner1,
+      "Known for their Swiss watches, Chopard is not only known for their unique timepieces, but also for their jewelry",
+    image: banner1
+     
   },
   {
     id: 2,
-    title: "Brazil",
+    title: " Ulysse Nardin",
     description:
-      "Brazil, officially the Federative Republic of Brazil, is the largest country in both South America ",
-    image: banner2,
+      "Ulysse Nardin has been in continuous production since its creation in 1846. Specializing in wristwatches ",
+    image:banner2
   },
   {
     id: 3,
-    title: "Nepal",
+    title: "Panerai",
     description:
-      "Nepal, officially the Federal Democratic Republic of Nepal, is a landlocked country in South Asia.",
-    image: banner3,
+      "Founded in 1860 in Florence Italy, today Panerai’s headquarters are located in Milan Italy",
+    image: banner3
+    
+  },
+  {
+    id: 4,
+    title: " Glashütte Original",
+    description:
+      "While you may automatically think of Switzerland for luxury timepieces, Germany also knows how to create an impeccable wristwatch.",
+    image:banner4
   },
 ];
 const CarouselSlider = () => {
@@ -34,7 +44,7 @@ const CarouselSlider = () => {
           <img
             className="d-block w-100"
             style={{ height: "450px" }}
-            src={image.image}
+            src={image.image} 
             alt="First slide"
           />
           <Carousel.Caption style={{marginTop: "-30px"}}>

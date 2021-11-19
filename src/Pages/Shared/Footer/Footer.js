@@ -10,11 +10,11 @@ const Footer = () => {
           style={{ backgroundColor: "#20232A" }}
         >
           <Col xs={6} md={3} className="mt-3">
-            <h1>Sidnaz Watch</h1>
+            <h4>Sidnaz Watch</h4>
             <div className="text-white">
-              <p>x flor , 500/D kings road</p>
-              <p>NewWork City-1872</p>
-              <p>+56870909876</p>
+              <p>KingRoad, England</p>
+              <p>England City-1872</p>
+              <p>+5065745947575</p>
               <p>contact@sidnazwatch.com</p>
             </div>
           </Col>
@@ -22,11 +22,11 @@ const Footer = () => {
             <div className="d-flex flex-column">
               <h4>Company</h4>
               <div className="d-flex flex-column">
-                <Link className="text-white text-decoration-none" to="/pricing">
-                  Pricing
+                <Link className="text-white text-decoration-none" to="/home">
+                  Home
                 </Link>
-                <Link className="text-white text-decoration-none" to="/about">
-                  About
+                <Link className="text-white text-decoration-none" to="/shop">
+                  Shop
                 </Link>
                 <Link className="text-white text-decoration-none" to="/gallery">
                   Gallery
@@ -38,26 +38,26 @@ const Footer = () => {
             </div>
           </Col>
           <Col xs={6} md={3} className="mt-3">
-            <h4>Popular Watch</h4>
+            <h4>Popular Sidnaz Watch</h4>
             <div className="d-flex justify-content-evenly">
               <div className="d-flex flex-column">
                 <Link
                   className="text-white text-decoration-none"
                   to="/bangladesh"
                 >
-                  Bangladesh
+                  Rolex
                 </Link>
                 <Link className="text-white text-decoration-none" to="/england">
-                  England
+                  Blancpain
                 </Link>
                 <Link
                   className="text-white text-decoration-none"
                   to="/switzerland"
                 >
-                  Switzerland
+                  Chopard
                 </Link>
                 <Link className="text-white text-decoration-none" to="/franch">
-                  Franch
+                  Ulysse Nardin
                 </Link>
               </div>
 
@@ -66,16 +66,16 @@ const Footer = () => {
                   className="text-white text-decoration-none"
                   to="/indonesia"
                 >
-                  Indronesis
+                  Panerai
                 </Link>
                 <Link className="text-white text-decoration-none" to="/canada">
-                  Canada
+                  Piaget SA
                 </Link>
                 <Link className="text-white text-decoration-none" to="/italy">
-                  Italy
+                  Cartier
                 </Link>
                 <Link className="text-white text-decoration-none" to="/india">
-                  India
+                  Breitling
                 </Link>
               </div>
             </div>
@@ -85,30 +85,29 @@ const Footer = () => {
             <div className="d-flex flex-row justify-content-center">
               <img
                 className="h-50 w-25 m-2 rounded"
-                src="../../../BannerImage/banner1.jpeg"
+                src="../../../BannerImage/banner1.jpg"
               />
               <img
                 className="h-25 w-25 m-2 rounded"
-                src="../../../BannerImage/banner1.jpeg"
+                src="../../../BannerImage/banner2.jpg"
               />
             </div>
             <div className="d-flex flex-row justify-content-center">
               <img
                 className="h-25 w-25 m-2 rounded"
-                src="../../../BannerImage/banner2.jpeg"
+                src="../../../BannerImage/banner3.jpg"
               />
               <img
                 className="h-25 w-25 m-2 rounded"
-                src="../../../BannerImage/banner3.jpg"
+                src="../../../BannerImage/banner4.jpg"
               />
             </div>
           </Col>
 
           <hr />
           <div className="text-align-center mb-2 text-white">
-            <p>
-              Copyright ©2021 All rights reserved | This template is made with
-              by NurNazTravleo
+            <p className="text-align-center">
+              Copyright ©2021 All rights reserved | SidNaz Watch
             </p>
           </div>
         </Row>

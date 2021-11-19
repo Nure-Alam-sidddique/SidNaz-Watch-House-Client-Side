@@ -8,15 +8,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import axios from 'axios';
 import * as React from "react";
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-];
 
 export default function AcccessibleTable() {
   const [userOrder, setUserOrder] = React.useState([]);
@@ -38,7 +29,7 @@ export default function AcccessibleTable() {
   }
   const orderLoading = async () => {
     try {
-      await axios("http://localhost:5000/orders").then(res => setUserOrder(res.data));
+      await axios("https://quiet-springs-91793.herokuapp.com/orders").then(res => setUserOrder(res.data));
     }
     catch (error) {
       console.log(error.message);

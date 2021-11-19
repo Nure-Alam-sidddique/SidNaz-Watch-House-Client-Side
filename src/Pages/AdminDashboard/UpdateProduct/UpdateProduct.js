@@ -9,7 +9,7 @@ const UpdateProduct = () => {
   
 
     useEffect(() => {
-        axios(`http://localhost:5000/products/${updatedId}`).then(res => setSingleProduct(res.data));
+        axios(`https://quiet-springs-91793.herokuapp.com/products/${updatedId}`).then(res => setSingleProduct(res.data));
     }, [])
   
   const handleInputField = (e) => {
@@ -21,7 +21,7 @@ const UpdateProduct = () => {
   }
   console.log(product);
   const handleSubmit= (e)=>{
-    const url = `http://localhost:5000/products/${updatedId}`;
+    const url = `https://quiet-springs-91793.herokuapp.com/products/${updatedId}`;
     axios.put(url, product).then(res => { console.log(res.data) });
     // fetch(url, {
     //   method: "PUT", 

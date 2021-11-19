@@ -10,8 +10,8 @@ const Shop = () => {
   const [isLoading, SetIsLoading] = useState(false);
   const productsLoading = async () => {
     try {
-      await axios("http://localhost:5000/products").then((res) =>
-        setAllProducts(res.data)
+      await axios("https://quiet-springs-91793.herokuapp.com/products").then(
+        (res) => setAllProducts(res.data)
       );
       SetIsLoading(true);
     } catch (e) {

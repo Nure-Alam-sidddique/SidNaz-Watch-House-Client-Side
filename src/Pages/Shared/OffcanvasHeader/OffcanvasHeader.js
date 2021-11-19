@@ -34,7 +34,7 @@ const handleLogout = () => {
             <Link style={{ textDecoration: "none", fontSize: "20px", color: "MenuText", margin: "3px" }} to="/reviews"> Review</Link>
             <hr/>
             <Link style={{textDecoration: "none", fontSize: "20px", color: "MenuText" , margin: "3px"}} to="/reviews" onClick={handleLogout}>
-              LogOut
+              Logout
             </Link>
           </Offcanvas.Body>
         </Offcanvas>

@@ -192,15 +192,6 @@ function AdminHome(props) {
             </ListItemIcon>
           </Link>
         </ListItem>
-
-        {/* <ListItem button>
-          <ListItemIcon onClick={logOutFromDashboard}>
-            <Link to={`${url}/logout`}>
-              <HomeIcon color="action" />
-            </Link>
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
-        </ListItem> */}
       </List>
     </div>
   );

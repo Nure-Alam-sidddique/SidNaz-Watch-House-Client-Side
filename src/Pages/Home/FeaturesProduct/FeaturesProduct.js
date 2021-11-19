@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import featuredImage from '../../../BannerImage/slider1.jpg';
+import featuredImage from '../../../BannerImage/banner1.jpg';
 
 const FeaturesProduct = () => {
     return (

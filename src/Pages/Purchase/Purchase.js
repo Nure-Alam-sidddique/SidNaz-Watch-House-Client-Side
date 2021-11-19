@@ -13,7 +13,7 @@ const Purchase = () => {
     const [loading, setLoading] = useState(false);
     const { register, handleSubmit } = useForm(); //  Form hooks
     // console.log(purchaseId);
-    const url = `http://localhost:5000/products/${purchaseId}`;
+    const url = `https://quiet-springs-91793.herokuapp.com/products/${purchaseId}`;
     const purchaseProductLoading = async () => {
         try {
             axios(url).then((res) => setPurchaseProduct(res.data));
@@ -34,7 +34,7 @@ const Purchase = () => {
         data.title = purchaseProudct.title;
         data.imageURL = purchaseProudct.imageURL;
         // console.log(data);
-        axios.post('http://localhost:5000/placeOrders', data).then(res => {
+        axios.post('https://quiet-springs-91793.herokuapp.com/placeOrders', data).then(res => {
             if (res.data.insertedId) {
                 alert('Data Successfully Send');
                 console.log(res.data);

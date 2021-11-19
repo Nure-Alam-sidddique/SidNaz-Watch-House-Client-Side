@@ -9,8 +9,8 @@ const Testimonial = () => {
 
   const sellerLoading = async () => {
     try {
-      await axios("http://localhost:5000/review").then((res) =>
-        setReviews(res.data)
+      await axios("https://quiet-springs-91793.herokuapp.com/review").then(
+        (res) => setReviews(res.data)
       );
       setIsLoading(true);
     } catch (error) {

@@ -21,7 +21,7 @@ const handleLogout = () => {
             <Offcanvas.Title></Offcanvas.Title>
           </Offcanvas.Header>
           <img style={{borderRadius: "50%", width: "100px", height: "100px" , margin: "auto"}} src={`${user.photoURL}`} alt="userPhoto"/>
-          <h5 style={{marginTop: "30px", padding: "8px"}}>{user.displayName}</h5>
+          <h5 style={{marginTop: "30px", padding: "8px", textAlign: "center"}}>{user.displayName}</h5>
           <Offcanvas.Body
             style={{
               display: "flex",

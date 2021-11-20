@@ -23,7 +23,7 @@ const Testimonial = () => {
   }, []);
   return (
     <div>
-      <h1>Client Says</h1>
+      <h1 style={{color: "orange", textAlign: 'center', marginTop: "10px" , marginBottom: "20px"}}>Client Says</h1>
       <Container>
         <Row xs={1} md={3} className="g-4">
           {isLoading ? (

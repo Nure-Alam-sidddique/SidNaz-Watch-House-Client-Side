@@ -51,7 +51,7 @@ const Header = () => {
           <Nav>
             {user?.email ? (
               <>
-                <img
+               {user?.photoURL? <img
                   onClick={handleShow}
                   style={{
                     width: "30px",
@@ -61,7 +61,8 @@ const Header = () => {
                     cursor: "pointer",
                   }}
                   src={user?.photoURL}
-                />
+                />: <Button onClick={handleShow}>Dashboard</Button>}
+               
 
                 <OffcanvasHeader
                   show={show}

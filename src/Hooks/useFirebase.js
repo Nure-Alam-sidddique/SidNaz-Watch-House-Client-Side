@@ -95,9 +95,11 @@ updateProfile(auth.currentUser, {
   }, []);
   //  User load form database
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`).then(res => res.json()).then(data => {
-      setAdmin(data.admin)
-    })
+    fetch(`https://quiet-springs-91793.herokuapp.com/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data.admin);
+      });
   }, [user.email])
   const logOut = (history)=> {
     setIsLoading(true);
@@ -114,19 +116,20 @@ const users= {email, displayName}
   //     alert("User Data Successfully Send");
   //   }
   // });
-  fetch('http://localhost:5000/users', {
+  fetch("https://quiet-springs-91793.herokuapp.com/users", {
     method: method,
     headers: {
-      'content-type': 'application/json'
+      "content-type": "application/json",
     },
-    body: JSON.stringify(users)
-  }).then(res => res.json()).then(data => {
-    
-    console.log(data);
-    if (data.insertedId || data.upsertedId) {
-      alert("User Data Successfully Send");
-    }
-  });
+    body: JSON.stringify(users),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.insertedId || data.upsertedId) {
+        alert("User Data Successfully Send");
+      }
+    });
 }
   return {
     user,
